@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tea Centre - Favorites</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#ff9933",
+                        "on-tertiary-container": "#464626",
+                        "background": "#fff8f5",
+                        "on-primary-container": "#693800",
+                        "surface": "#fff8f5",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#783603",
+                        "surface-dim": "#e1d8d4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#753401",
+                        "on-surface": "#1e1b18",
+                        "inverse-on-surface": "#f8efea",
+                        "outline": "#887364",
+                        "tertiary-fixed": "#e6e5b9",
+                        "surface-container-highest": "#e9e1dc",
+                        "on-primary-fixed-variant": "#6d3a00",
+                        "outline-variant": "#dbc2b0",
+                        "on-tertiary-fixed": "#1d1d03",
+                        "tertiary-container": "#b5b48b",
+                        "on-background": "#1e1b18",
+                        "primary-fixed-dim": "#ffb77a",
+                        "on-error": "#ffffff",
+                        "secondary": "#934b19",
+                        "on-tertiary-fixed-variant": "#484828",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e9e1dc",
+                        "surface-container-high": "#efe6e2",
+                        "tertiary-fixed-dim": "#cac99f",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#fff8f5",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#34302c",
+                        "secondary-fixed": "#ffdbc9",
+                        "inverse-primary": "#ffb77a",
+                        "surface-container-low": "#fbf2ed",
+                        "surface-container": "#f5ece7",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#ffdcc2",
+                        "tertiary": "#60603e",
+                        "secondary-container": "#ffa26a",
+                        "on-secondary-fixed": "#321200",
+                        "error": "#ba1a1a",
+                        "primary": "#8f4e00",
+                        "on-primary-fixed": "#2e1500",
+                        "secondary-fixed-dim": "#ffb68c",
+                        "on-surface-variant": "#554336",
+                        "surface-tint": "#8f4e00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "md": "16px",
+                        "container-margin-desktop": "64px",
+                        "unit": "4px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "container-margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": [
+                            "Be Vietnam Pro"
+                        ],
+                        "headline-md": [
+                            "Montserrat"
+                        ],
+                        "label-md": [
+                            "Be Vietnam Pro"
+                        ],
+                        "price-display": [
+                            "Montserrat"
+                        ],
+                        "headline-lg": [
+                            "Montserrat"
+                        ],
+                        "body-lg": [
+                            "Be Vietnam Pro"
+                        ],
+                        "headline-xl": [
+                            "Montserrat"
+                        ],
+                        "headline-lg-mobile": [
+                            "Montserrat"
+                        ]
+                    },
+                    "fontSize": {
+                        "body-md": [
+                            "16px",
+                            {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "headline-md": [
+                            "20px",
+                            {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "label-md": [
+                            "14px",
+                            {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "price-display": [
+                            "22px",
+                            {
+                                "lineHeight": "22px",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "headline-lg": [
+                            "32px",
+                            {
+                                "lineHeight": "40px",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "body-lg": [
+                            "18px",
+                            {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "headline-xl": [
+                            "40px",
+                            {
+                                "lineHeight": "48px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "headline-lg-mobile": [
+                            "24px",
+                            {
+                                "lineHeight": "30px",
+                                "fontWeight": "700"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen pb-24 md:pb-0">
+<!-- Desktop Navigation Drawer (Hidden on Mobile) -->
+<nav class="hidden md:flex fixed left-0 top-0 h-full w-80 bg-surface-container-low border-r border-outline-variant/10 shadow-xl flex-col z-[60] py-lg px-md">
+<div class="flex items-center gap-4 mb-xl px-sm">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A small, circular avatar image showing a generic profile silhouette in warm sepia tones, representing a user profile picture for a modern hospitality app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4_V7tYdpmXziejB5ZJedx3OvVpK4srhn9mJp8XwyRRIIBgiDzMIcIGzLkAJTNiqd-yd-WaoDHc6lm8O8EPJ84M2qxLkxjf_sSLcMYomeq8asy-fKIkxPANCYfjvVgJr-VjydoO0rs5HZpOuX9iH09DIX76rsr4j8fe5Js4KH8hEo1YN7CO1VHhl52IdeGdh4_eAGr7NY9tOP-ClqwwgLpC3xo6KaEhpLeJUMYcpcoXXpOXi31FQsQ"/>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Tea Centre</h2>
+<p class="font-body-md text-body-md text-secondary">Admin Portal</p>
+</div>
+</div>
+<ul class="flex-1 flex flex-col gap-sm">
+<li>
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/30 transition-colors duration-200 m-2" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/30 transition-colors duration-200 m-2" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="font-label-md text-label-md">Menu Management</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/30 transition-colors duration-200 m-2" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Order Analytics</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="md:ml-80">
+<!-- Top App Bar (Mobile & Desktop) -->
+<header class="sticky top-0 w-full z-50 bg-background flex justify-between items-center px-container-margin-mobile md:px-container-margin-desktop py-md shadow-sm transition-all duration-200">
+<div class="flex items-center gap-sm">
+<img class="w-10 h-10 rounded-full object-cover md:hidden cursor-pointer active:scale-95 transition-transform" data-alt="A small, round profile image of a user in a modern cafe setting, warm lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkRaSQv_Mf_nofd-0SwvkJwn0VvVHSUINknBPlc6ffahmP__TOcKzFc9HKT5cFsRvDovUv3pkm5qOzlGNob3a6DDNVq2c_Qcj7d4d80DjINtp0sXHdA8bbAsdFjE29n0gXsdSTJoajgM8EuUms-mdacwncWrRIJRRLRhyM3C9ucoWJQfKPSDxlS0sKL4x0zJGmYV9q_dOJ2elWKhuD4aLWrsUZ0oe1W47Q3DiJiUIlNdeyBPLOZj_P"/>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Tea Centre</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-primary hover:bg-surface-variant/20 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-container-margin-mobile md:px-container-margin-desktop py-lg max-w-[1280px] mx-auto">
+<div class="mb-lg">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-unit">Your Favorites</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">The snacks you crave most, ready to reorder.</p>
+</div>
+<!-- Bento Grid Layout for Favorites -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Favorite Item Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(143,78,0,0.05)] border border-outline/10 flex flex-col group hover:shadow-[0px_8px_30px_rgba(143,78,0,0.1)] transition-shadow duration-300">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="A close-up, high-quality food photography shot of a steaming cup of traditional Indian Masala Chai served in a classic glass tumbler. The background is a clean, creamy white surface with soft, diffused lighting highlighting the warm amber tones of the tea." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiHCbn1Q57sez0ZAVFrKPimJANjdhxnKlaTmaFJuzLHjabBwG_B0qIZxmi43Hrek181WUw61qrpv3vHcCNofiKU3oegcjYyoNGfwscRJIp9v8wjRuKc1AQihXJB9HFQxvS07g76mExhy-fraZXYNrXlkCjzV6ayGmCYYPdmyFAqNoSbXkq55x5SwkNtsJtnnfRjXEqxEQWDJKtQ67-9C6o4eAumyxTKr407D5tAV2e45YcrqM0wQF8"/>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/80 backdrop-blur-sm p-sm rounded-full">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="absolute bottom-sm left-sm bg-primary/90 text-on-primary px-sm py-xs rounded-lg shadow-sm">
+<span class="font-price-display text-price-display">₹40</span>
+</div>
+</div>
+<div class="p-md flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Classic Masala Chai</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Our signature blend of Assam tea leaves, brewed to perfection with fresh ginger and aromatic spices.</p>
+</div>
+<button class="mt-md w-full bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-label-md text-label-md py-sm rounded-lg flex items-center justify-center gap-xs transition-colors shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+                            Reorder
+                        </button>
+</div>
+</article>
+<!-- Favorite Item Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(143,78,0,0.05)] border border-outline/10 flex flex-col group hover:shadow-[0px_8px_30px_rgba(143,78,0,0.1)] transition-shadow duration-300">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="A beautifully plated Punjabi Samosa on a minimalist ceramic dish. The samosa is golden brown and crispy, accompanied by a small swirl of vibrant green mint chutney. The lighting is warm and inviting, set against a smooth cream background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjWFNUyI9qMkpSXEfuPU0Iu2tPTTatbqO2clW4VzGT1BXxyYYqsWCb6uuZF5NWuv9GIeoB9v7e2Z_AJkvsuEET8vR1oZxmscdLJ4Kwzl7kjK28DUqccZVbMBWNEdmFf-j0K3KqHQzpmSN7XIpPSKPt703F6T1wnhZUNSoIwquZsfMXCA6Wba863rsFBrTy_-bo5pUDz1z6YerHTVpwrjCVaa8-kvoxkpuvOgTb313U2PtQs3hXoh89"/>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/80 backdrop-blur-sm p-sm rounded-full">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="absolute bottom-sm left-sm bg-primary/90 text-on-primary px-sm py-xs rounded-lg shadow-sm">
+<span class="font-price-display text-price-display">₹25</span>
+</div>
+</div>
+<div class="p-md flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Punjabi Samosa</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Crispy pastry crust filled with a savory, spiced mixture of mashed potatoes and green peas. Served with mint chutney.</p>
+</div>
+<button class="mt-md w-full bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-label-md text-label-md py-sm rounded-lg flex items-center justify-center gap-xs transition-colors shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+                            Reorder
+                        </button>
+</div>
+</article>
+<!-- Favorite Item Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(143,78,0,0.05)] border border-outline/10 flex flex-col group hover:shadow-[0px_8px_30px_rgba(143,78,0,0.1)] transition-shadow duration-300 md:col-span-2 lg:col-span-1">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="A top-down view of a plate of hot, buttery Bun Maska. The soft white bun is sliced in half, generously slathered with rich yellow butter. It sits beside a small traditional cutting chai glass on a rustic yet clean, light-colored wooden table." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmdwZt2x043HI3jJKjSCSz-3M5lgein83bpqz0e6TT-pSxKhnQECTKJ9oGhh_H-ECeYJsjRBYCBpBpWiF4eGCo3ZbFv2vQGcw8DC68zCH8kDdBjDIgaamks3uyzmp4frnSWh_lLQRAZClfR1tcydNSR7mWRUeL6IHc1RTQAr6TB2XF4Q-KC7jR9h3Lj2OOKT6nmY6hi2wRcwkWTdwKMzdLlEjBW1azEHAMQUvZWIwqF4OMwGjKDk5o"/>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/80 backdrop-blur-sm p-sm rounded-full">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="absolute bottom-sm left-sm bg-primary/90 text-on-primary px-sm py-xs rounded-lg shadow-sm">
+<span class="font-price-display text-price-display">₹35</span>
+</div>
+</div>
+<div class="p-md flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Bun Maska</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">A nostalgic classic. Soft, fresh bun generously slathered with sweet and salty butter. Best enjoyed dipped in hot chai.</p>
+</div>
+<button class="mt-md w-full bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-label-md text-label-md py-sm rounded-lg flex items-center justify-center gap-xs transition-colors shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+                            Reorder
+                        </button>
+</div>
+</article>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface shadow-[0px_-4px_20px_rgba(147,75,25,0.05)] rounded-t-xl pb-6">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary/10 transition-transform duration-300 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-label-md text-label-md mt-1">Favorites</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary/10 transition-transform duration-300 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary/10 transition-transform duration-300 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

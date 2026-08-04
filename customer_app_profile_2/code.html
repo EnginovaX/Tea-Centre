@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tea Centre - Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-container": "#ff9933",
+                      "on-tertiary-container": "#464626",
+                      "background": "#fff8f5",
+                      "on-primary-container": "#693800",
+                      "surface": "#fff8f5",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#783603",
+                      "surface-dim": "#e1d8d4",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#753401",
+                      "on-surface": "#1e1b18",
+                      "inverse-on-surface": "#f8efea",
+                      "outline": "#887364",
+                      "tertiary-fixed": "#e6e5b9",
+                      "surface-container-highest": "#e9e1dc",
+                      "on-primary-fixed-variant": "#6d3a00",
+                      "outline-variant": "#dbc2b0",
+                      "on-tertiary-fixed": "#1d1d03",
+                      "tertiary-container": "#b5b48b",
+                      "on-background": "#1e1b18",
+                      "primary-fixed-dim": "#ffb77a",
+                      "on-error": "#ffffff",
+                      "secondary": "#934b19",
+                      "on-tertiary-fixed-variant": "#484828",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#e9e1dc",
+                      "surface-container-high": "#efe6e2",
+                      "tertiary-fixed-dim": "#cac99f",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#fff8f5",
+                      "on-error-container": "#93000a",
+                      "inverse-surface": "#34302c",
+                      "secondary-fixed": "#ffdbc9",
+                      "inverse-primary": "#ffb77a",
+                      "surface-container-low": "#fbf2ed",
+                      "surface-container": "#f5ece7",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed": "#ffdcc2",
+                      "tertiary": "#60603e",
+                      "secondary-container": "#ffa26a",
+                      "on-secondary-fixed": "#321200",
+                      "error": "#ba1a1a",
+                      "primary": "#8f4e00",
+                      "on-primary-fixed": "#2e1500",
+                      "secondary-fixed-dim": "#ffb68c",
+                      "on-surface-variant": "#554336",
+                      "surface-tint": "#8f4e00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "40px",
+                      "md": "16px",
+                      "container-margin-desktop": "64px",
+                      "unit": "4px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "sm": "8px",
+                      "gutter": "16px",
+                      "container-margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-md": [
+                              "Montserrat"
+                      ],
+                      "label-md": [
+                              "Be Vietnam Pro"
+                      ],
+                      "price-display": [
+                              "Montserrat"
+                      ],
+                      "headline-lg": [
+                              "Montserrat"
+                      ],
+                      "body-lg": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-xl": [
+                              "Montserrat"
+                      ],
+                      "headline-lg-mobile": [
+                              "Montserrat"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "price-display": [
+                              "22px",
+                              {
+                                      "lineHeight": "22px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-[80px] md:pb-0 md:pt-[72px]">
+<!-- Desktop Navigation Drawer (hidden on mobile) -->
+<nav class="hidden md:flex flex-col bg-surface-container-low h-full w-80 rounded-r-xl border-r border-outline-variant/10 shadow-xl fixed left-0 top-0 z-[60]">
+<div class="p-lg">
+<h1 class="font-headline-lg text-headline-lg text-primary font-bold">Admin Portal</h1>
+<p class="font-body-md text-body-md text-secondary">Tea Centre Management</p>
+</div>
+<div class="flex-grow">
+<a class="flex items-center gap-md p-md m-2 text-on-surface-variant hover:bg-surface-variant/30 rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md p-md m-2 text-on-surface-variant hover:bg-surface-variant/30 rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="font-label-md text-label-md">Menu Management</span>
+</a>
+<a class="flex items-center gap-md p-md m-2 text-on-surface-variant hover:bg-surface-variant/30 rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Order Analytics</span>
+</a>
+</div>
+</nav>
+<!-- Top App Bar (Mobile & Desktop) -->
+<header class="flex justify-between items-center px-container-margin-mobile w-full z-50 bg-background shadow-sm h-[64px] fixed top-0 md:pl-[352px] md:pr-container-margin-desktop">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A close-up portrait of a cheerful person enjoying a cup of tea in a warm, inviting cafe setting. The lighting is soft and golden, highlighting their relaxed expression. The background subtly hints at a traditional Indian chai stall aesthetic with terracotta tones and minimalist design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArYcw1pb3wUFao4YGeiWuuxL3JLn6StXQSTPlXXA16LNa3K_owvltlJOUNldSAfo9lGg34e7WHzwBxWyXkEOdWgpCG9hb07aSLi1se6PiGOjlLxPbcvyg0VuOcqYRipfIZW1j-2krPJQ6dEo8JNwHcZiPKZ81ZYGPzhF1hkIlb-xertvJRtZfgteOqDyzmQXjRH6vFTnOrcWwkNzsnnOCw0IrKPREgL9FctVSCooefafz7R0eGCzqT"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Tea Centre</h1>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-variant/20 transition-all duration-200 active:scale-95 text-primary">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-[1280px] mx-auto pt-[80px] px-container-margin-mobile md:px-container-margin-desktop md:ml-80">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg mt-lg">
+<!-- User Header & Points Bento -->
+<div class="md:col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(143,78,0,0.05)] p-lg flex flex-col md:flex-row gap-lg items-center md:items-start relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16 pointer-events-none"></div>
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-surface border-opacity-50 flex-shrink-0 z-10 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A vibrant, stylized portrait of a smiling customer holding a clay cup (kulhad) of steaming hot chai. The scene is lit with warm, sunny ambient light, emphasizing a comforting and welcoming atmosphere. The colors are rich and earthy, dominated by warm saffron and cream tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1DNULpPisRf0zICTigkVAHvSzEPpDToB2eufSs5gll0OICP59Do3yDEAdG7Kl5ZpwpdA-WlZ4RgrdazwVJGMLXVAK48DVCfJxM1SXM537LMGDj2njQCjNWBw24rGDkzl9n9Vn54jeJEMePc6f6C3ijmQmQ7eAk4eFJ5U9jx3pVO0Qe7rjOCxstKYgHgWp19k9FgNc7lIIc4vZQYhC_Wmw-88kCvyiyY5ZFsXcjPXASEyZQzrAKxaN"/>
+</div>
+<div class="flex flex-col text-center md:text-left z-10 flex-grow">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-on-background mb-xs">Aarav Sharma</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">+91 98765 43210</p>
+<button class="self-center md:self-start border border-outline/30 text-on-surface rounded-full px-4 py-2 font-label-md text-label-md hover:bg-surface-variant/20 transition-colors">
+                        Edit Profile
+                    </button>
+</div>
+<div class="w-full md:w-auto bg-primary-container/20 rounded-xl p-md flex flex-col items-center justify-center border border-primary/10 z-10 min-w-[160px]">
+<span class="material-symbols-outlined text-primary mb-xs" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-md text-label-md text-on-primary-container uppercase tracking-wider mb-xs">Tea Points</span>
+<span class="font-price-display text-price-display text-primary">1,240</span>
+</div>
+</div>
+<!-- Saved Addresses Bento -->
+<div class="md:col-span-12 lg:col-span-4 bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(143,78,0,0.05)] p-lg flex flex-col">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md font-bold text-on-background">Saved Addresses</h3>
+<button class="text-primary hover:bg-primary/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="flex flex-col gap-sm flex-grow">
+<div class="flex items-start gap-md p-md border border-outline/10 rounded-lg hover:border-primary/30 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-secondary mt-1">home</span>
+<div>
+<p class="font-label-md text-label-md text-on-background">Home</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-xs">123, Lotus Apartments, MG Road, Bangalore</p>
+</div>
+</div>
+<div class="flex items-start gap-md p-md border border-outline/10 rounded-lg hover:border-primary/30 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-secondary mt-1">work</span>
+<div>
+<p class="font-label-md text-label-md text-on-background">Work</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-xs">Tech Park Phase 2, Whitefield, Bangalore</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Settings Links Grid -->
+<div class="md:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+<a class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(143,78,0,0.05)] p-md flex items-center justify-between group hover:bg-surface-variant/10 transition-colors border border-transparent hover:border-outline/10" href="#">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-variant/50 flex items-center justify-center text-secondary group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<span class="font-label-md text-label-md text-on-background">Order History</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</a>
+<a class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(143,78,0,0.05)] p-md flex items-center justify-between group hover:bg-surface-variant/10 transition-colors border border-transparent hover:border-outline/10" href="#">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-variant/50 flex items-center justify-center text-secondary group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<span class="font-label-md text-label-md text-on-background">Payment Methods</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</a>
+<a class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(143,78,0,0.05)] p-md flex items-center justify-between group hover:bg-surface-variant/10 transition-colors border border-transparent hover:border-outline/10" href="#">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-variant/50 flex items-center justify-center text-secondary group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<span class="font-label-md text-label-md text-on-background">Notifications</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</a>
+<a class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(143,78,0,0.05)] p-md flex items-center justify-between group hover:bg-surface-variant/10 transition-colors border border-transparent hover:border-outline/10" href="#">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-variant/50 flex items-center justify-center text-secondary group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help</span>
+</div>
+<span class="font-label-md text-label-md text-on-background">Support &amp; FAQs</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</a>
+</div>
+<div class="md:col-span-12 mt-lg mb-xl flex justify-center">
+<button class="text-error font-label-md text-label-md hover:bg-error-container/20 px-6 py-3 rounded-full transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">logout</span>
+                    Sign Out
+                 </button>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Nav Bar (hidden on md) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface shadow-[0px_-4px_20px_rgba(147,75,25,0.05)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary/10 transition-transform duration-300 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary/10 transition-transform duration-300 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-md text-label-md mt-1">Favorites</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary/10 transition-transform duration-300 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

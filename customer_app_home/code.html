@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tea Centre</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Be+Vietnam+Pro:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#ffb77a",
+                        "primary-fixed": "#ffdcc2",
+                        "surface-container": "#f5ece7",
+                        "tertiary-container": "#b5b48b",
+                        "tertiary-fixed": "#e6e5b9",
+                        "on-tertiary-fixed-variant": "#484828",
+                        "surface": "#fff8f5",
+                        "on-surface": "#1e1b18",
+                        "on-secondary-container": "#783603",
+                        "on-background": "#1e1b18",
+                        "on-secondary-fixed-variant": "#753401",
+                        "on-secondary-fixed": "#321200",
+                        "inverse-on-surface": "#f8efea",
+                        "on-surface-variant": "#554336",
+                        "tertiary": "#60603e",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "secondary": "#934b19",
+                        "outline-variant": "#dbc2b0",
+                        "surface-container-highest": "#e9e1dc",
+                        "on-primary-fixed": "#2e1500",
+                        "error-container": "#ffdad6",
+                        "outline": "#887364",
+                        "on-tertiary-container": "#464626",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#8f4e00",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#693800",
+                        "secondary-fixed-dim": "#ffb68c",
+                        "surface-bright": "#fff8f5",
+                        "tertiary-fixed-dim": "#cac99f",
+                        "inverse-primary": "#ffb77a",
+                        "on-primary-fixed-variant": "#6d3a00",
+                        "background": "#fff8f5",
+                        "on-tertiary-fixed": "#1d1d03",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#34302c",
+                        "surface-container-low": "#fbf2ed",
+                        "surface-tint": "#8f4e00",
+                        "secondary-container": "#ffa26a",
+                        "surface-variant": "#e9e1dc",
+                        "primary-container": "#ff9933",
+                        "surface-container-high": "#efe6e2",
+                        "surface-dim": "#e1d8d4",
+                        "secondary-fixed": "#ffdbc9",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-margin-mobile": "16px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xl": "40px",
+                        "container-margin-desktop": "64px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "price-display": ["Montserrat"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "headline-xl": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "price-display": ["22px", { "lineHeight": "22px", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen relative pb-24">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-on-surface shadow-sm">
+<div class="flex justify-between items-center px-container-margin-mobile md:px-container-margin-desktop h-16 w-full">
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-inverse-surface transition-colors rounded-full p-2 active:scale-95 duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-primary dark:text-primary-fixed-dim font-headline-md md:text-headline-md flex items-center gap-2">
+<img alt="Tea Centre Logo" class="h-8 w-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChEWCpDY1-thlmKqo2Gh6KsQ_-A6bw2ZzT61zs6HW2NDgy7LnSZ2RXeoO511zKOIIZpMD4Ca7z_sZIN-1UCioa8eUWnFUpxG3JSH-uJzOyjzUpKI8OEdPsogfWvx1icZdxl4ura8UpbDkOqi8Z82mdGl7u4DQYyKQ3o7Z7RJuhKjU8gyQmaSgl15Oml2sBxfwzczQd_MeZnax5ukGWakFhQlTJjwMCn5DB5r-Ei6saBmWk2XM8ONwr"/>
+                 Tea Centre
+            </div>
+<button class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-inverse-surface transition-colors rounded-full p-1 active:scale-95 duration-150 flex items-center justify-center">
+<img class="h-8 w-8 rounded-full object-cover shadow-sm" data-alt="A close up portrait of a young professional Indian man smiling warmly, shot in a bright modern cafe setting with soft natural light, conveying a friendly and welcoming demeanor. The image uses a warm color palette with subtle hints of saffron orange in the background, consistent with a high-quality modern hospitality app. High resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWkE55F5UMhxJOckiMe9rc4GCqAXKKQxCuz08jrVkvJajep8jKfAXGG9Qzk4qaeN3NEKNwAxC_inwE_LH8fS_cOj89dl2cNos0y-G_BDzVM3Jz6uv0IOyDpgXMxD6aUlbOdxunzA_2bwMF2O3YQwe434uV1HYX2dFDpZmNZcjE3IfNDgjPjcn7DF5JpAHZbUFl4fEGwLz3AiuTqVnvkDpn5hs858AABzZqjeB3u60ktJvkt_n-gfj2"/>
+</button>
+</div>
+</header>
+<main class="pt-20 px-container-margin-mobile md:px-container-margin-desktop max-w-7xl mx-auto">
+<!-- Welcome Section -->
+<section class="mb-lg">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-background mb-1">Hi, Rahul!</h1>
+<p class="text-on-surface-variant font-body-md text-body-md">What are you craving today?</p>
+</section>
+<!-- Search Bar -->
+<section class="mb-lg">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 border border-outline opacity-50 rounded-xl leading-5 bg-surface-container-low text-on-surface placeholder-on-surface-variant focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm h-[48px] shadow-sm transition-all duration-200" placeholder="Search for chai, snacks..." type="text"/>
+</div>
+</section>
+<!-- Category Chips -->
+<section class="mb-lg overflow-x-auto no-scrollbar">
+<div class="flex space-x-3 pb-2">
+<button class="flex-shrink-0 px-4 py-2 rounded-full border border-outline border-opacity-20 bg-primary-container text-on-primary-container font-label-md text-label-md shadow-sm transition-colors duration-200">
+                    Chai
+                </button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full border border-outline border-opacity-20 bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm transition-colors duration-200 hover:bg-surface-container-low">
+                    Coffee
+                </button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full border border-outline border-opacity-20 bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm transition-colors duration-200 hover:bg-surface-container-low">
+                    Snacks
+                </button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full border border-outline border-opacity-20 bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm transition-colors duration-200 hover:bg-surface-container-low">
+                    Combos
+                </button>
+</div>
+</section>
+<!-- Featured Products (Bento-ish layout for mobile) -->
+<section class="mb-lg">
+<h2 class="font-headline-md text-headline-md text-on-background mb-4">Popular Choices</h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- Product Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(143,78,0,0.05)] overflow-hidden flex flex-col relative group border border-outline border-opacity-10">
+<div class="h-32 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A top-down view of a steaming cup of traditional Indian Masala Chai in a simple terracotta cup, placed on a rustic wooden table. The lighting is warm and inviting, highlighting the rich amber color of the tea and the wisps of steam. The scene embodies a modern yet traditional minimalist aesthetic with a comforting cream and saffron color tone. High resolution food photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYWvOijcR0yFQlmrE_rRrpkbHJsi6k6w7voOzkAyLQfys9rDDHuFiVDKDjt4-CCroEplJPMPKvdPM2cJIRGWHCPPlggJWXVU2N3kR0nYwBVjVf5Ia59fDa3ANDBJrtwleaAr4gIpPccVRyPmrmc2O0Rzy2ow3Fe_gyYCQWfKeuaDK0LP4v4_Vm-_TYDwi3yKhjSDey3sV5FvAeQGiuurzAL_kjRXErJHAOfbmwi3rPI5Z2ENy1Ys3p"/>
+<div class="absolute top-2 right-2 bg-surface text-primary font-label-md text-label-md px-2 py-1 rounded-md shadow-sm flex items-center bg-opacity-90">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span> 4.8
+                        </div>
+</div>
+<div class="p-3 flex flex-col flex-grow justify-between">
+<div>
+<h3 class="font-headline-md text-[16px] leading-tight text-on-background mb-1">Masala Chai</h3>
+<p class="font-body-md text-[12px] text-on-surface-variant line-clamp-2 mb-2">Our signature blend with fresh spices.</p>
+</div>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-price-display text-[16px] text-primary">₹30</span>
+<button class="bg-primary-container text-on-primary-container rounded-full h-8 w-8 flex items-center justify-center shadow-sm hover:bg-primary hover:text-on-primary transition-colors duration-200">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(143,78,0,0.05)] overflow-hidden flex flex-col relative group border border-outline border-opacity-10">
+<div class="h-32 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A close-up shot of a perfectly golden, crispy Samosa served on a clean white ceramic plate. Next to it is a small bowl of vibrant green mint chutney. The background is a soft cream color, creating a warm minimalist look that makes the food pop. The lighting is bright and appetizing, capturing the flaky texture of the pastry. High resolution food photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLLN0S-DmSgQtJTnEwR9euvprMPYYWDos4CEEFQoVL6C3uaA5EIiiuOPKEjE_geXBYrt_Xv0nHlqyLKICfn_PDkI-86YBPWMOA9-FtDClbadlWbC-FCuxnFaZKDouUyt17McGUbMJBO3qzc1ELmRrT6iVe_FGkBBZjffAO4j1wHmi3LXxQrY8_owIDhOTXuByp4eT26yzSl9Y0tWCqFJseocJ-8nMj-uAfrVF9djiQa9RdalGVJbtX"/>
+<div class="absolute top-2 left-2 bg-surface bg-opacity-80 text-primary px-2 py-1 rounded-md border border-outline border-opacity-20 text-[10px] font-bold uppercase tracking-wider">
+                            Bestseller
+                         </div>
+</div>
+<div class="p-3 flex flex-col flex-grow justify-between">
+<div>
+<h3 class="font-headline-md text-[16px] leading-tight text-on-background mb-1">Punjabi Samosa</h3>
+<p class="font-body-md text-[12px] text-on-surface-variant line-clamp-2 mb-2">Crispy pastry filled with spiced potatoes.</p>
+</div>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-price-display text-[16px] text-primary">₹25</span>
+<button class="bg-primary-container text-on-primary-container rounded-full h-8 w-8 flex items-center justify-center shadow-sm hover:bg-primary hover:text-on-primary transition-colors duration-200">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Promotional Banner (Full width on mobile, spans columns on desktop) -->
+<section class="mb-lg">
+<div class="w-full rounded-2xl bg-cover bg-center h-40 shadow-sm relative overflow-hidden flex items-center p-6 border border-outline border-opacity-10" data-alt="A beautifully styled flat lay image featuring a combo meal of two cups of cutting chai and a plate of assorted pakoras. The composition is set against a soft, creamy background with subtle warm lighting. Saffron orange accents are incorporated through small props like napkins. The image conveys a sense of comfort, modern hospitality, and high-quality food presentation. Wide aspect ratio." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCWXfJUKckwJIXMKdbv0K29fu-kMCakemyxJlAPttPCf-I77_di0PXKljOnyA6nryPbuCbkhuKGDshScbVlAD0UMUwkNTBRFT7e5X3xqbF0qHZl1QCjbSk0_NRuye274GrhB8eTb_y-2N9L2l_-Pv7U8AuDBzsD27dyo4iuSZ1jhaAAeYG1jM5j71s_NLeV-A2E6yL6ZbW0jtKvEXdiSgVkyJOQmpZRg98kV3al3zFh1uExR6Cp8oSS')">
+<div class="absolute inset-0 bg-gradient-to-r from-on-background/80 to-transparent"></div>
+<div class="relative z-10 text-on-primary">
+<h3 class="font-headline-md text-headline-md mb-1">Evening Combo</h3>
+<p class="font-body-md text-body-md mb-3 opacity-90">2 Chai + Mix Pakodas</p>
+<button class="bg-primary-container text-on-primary-container font-label-md px-4 py-2 rounded-full shadow-md hover:bg-primary hover:text-on-primary transition-colors">
+                         Order Now
+                     </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Visible only on mobile/md:hidden) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface dark:bg-on-surface shadow-[0_-4px_20px_rgba(143,78,0,0.05)] shadow-lg fixed bottom-0 left-0 w-full flex justify-around items-center py-2 pb-safe px-4">
+<button class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-5 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-label-md text-[10px] mt-1">Menu</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-5 py-1 hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md text-[10px] mt-1">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-5 py-1 hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform relative">
+<span class="material-symbols-outlined" data-icon="shopping_basket">shopping_basket</span>
+<span class="absolute top-1 right-3 bg-error text-on-error text-[8px] font-bold rounded-full h-4 w-4 flex items-center justify-center">2</span>
+<span class="font-label-md text-[10px] mt-1">Cart</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-5 py-1 hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-[10px] mt-1">Profile</span>
+</button>
+</nav>
+</body></html>

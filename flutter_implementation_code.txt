@@ -1,0 +1,225 @@
+# Tea Centre: Flutter Widget Implementation
+
+This document provides the Flutter implementation for the "Tea Centre" app, translating the HTML/CSS designs into production-ready Dart code.
+
+## 1. Design System (Theme Data)
+
+```dart
+import 'package:flutter/material.dart';
+
+class SaffronSteamTheme {
+  static const Color primary = Color(0xFFFF9933);
+  static const Color surface = Color(0xFFFFF8F5);
+  static const Color onSurface = Color(0xFF4E342E);
+  static const Color surfaceContainer = Color(0xFFFBF2ED);
+  
+  static ThemeData get light {
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: primary,
+        surface: surface,
+        primary: primary,
+        onSurface: onSurface,
+      ),
+      fontFamily: 'Montserrat',
+      textTheme: const TextTheme(
+        headlineMedium: TextStyle(
+          fontSize: 28,
+          fontWeight: FontWeight.bold,
+          color: onSurface,
+        ),
+        titleLarge: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: onSurface,
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 14,
+          color: Colors.black87,
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: primary,
+          foregroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 16),
+        ),
+      ),
+    );
+  }
+}
+```
+
+## 2. Shared Components
+
+### Product Card Widget
+```dart
+class ProductCard extends StatelessWidget {
+  final String title;
+  final String description;
+  final double price;
+  final String imageUrl;
+  final bool isBestseller;
+
+  const ProductCard({
+    required this.title,
+    required this.description,
+    required this.price,
+    required this.imageUrl,
+    this.isBestseller = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                child: Image.network(imageUrl, height: 140, width: double.infinity, fit: BoxFit.cover),
+              ),
+              if (isBestseller)
+                Positioned(
+                  top: 8,
+                  left: 8,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.9),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: const Text('BESTSELLER', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                  ),
+                ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: Theme.of(context).textTheme.titleLarge),
+                const SizedBox(height: 4),
+                Text(description, maxLines: 2, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.bodySmall),
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('₹${price.toInt()}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    IconButton.filled(
+                      onPressed: () {},
+                      icon: const Icon(Icons.add),
+                      style: IconButton.styleFrom(backgroundColor: SaffronSteamTheme.primary),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+
+## 3. Screen Implementations
+
+### Home Screen (Customer App)
+```dart
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
+        title: Image.network('{{DATA:IMAGE:IMAGE_14}}', height: 40),
+        centerTitle: true,
+        actions: [
+          const CircleAvatar(backgroundImage: NetworkImage('https://via.placeholder.com/40')),
+          const SizedBox(width: 16),
+        ],
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Hi, Rahul!', style: Theme.of(context).textTheme.headlineMedium),
+            const Text('What are you craving today?'),
+            const SizedBox(height: 20),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Search for chai, snacks...',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 24),
+            Text('Popular Choices', style: Theme.of(context).textTheme.titleLarge),
+            const SizedBox(height: 16),
+            GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              childAspectRatio: 0.7,
+              children: const [
+                ProductCard(
+                  title: 'Masala Chai',
+                  description: 'Our signature blend with fresh spices.',
+                  price: 30,
+                  imageUrl: 'https://via.placeholder.com/150',
+                ),
+                ProductCard(
+                  title: 'Punjabi Samosa',
+                  description: 'Crispy pastry filled with spiced potatoes.',
+                  price: 25,
+                  imageUrl: 'https://via.placeholder.com/150',
+                  isBestseller: true,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: SaffronSteamTheme.primary,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.restaurant_menu), label: 'Menu'),
+          BottomNavigationBarItem(icon: Icon(Icons.receipt_long), label: 'Orders'),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_basket), label: 'Cart'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+      ),
+    );
+  }
+}
+```
+
+## 4. Integration Notes
+- **State Management:** Recommended to use `flutter_riverpod` for managing cart and order states.
+- **Routing:** Use `go_router` for deep linking between screens.
+- **Backend:** Ready for Firebase integration via `cloud_firestore` and `firebase_auth`.

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tea Centre Admin - Menu Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#ff9933",
+                        "on-tertiary-container": "#464626",
+                        "background": "#fff8f5",
+                        "on-primary-container": "#693800",
+                        "surface": "#fff8f5",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#783603",
+                        "surface-dim": "#e1d8d4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#753401",
+                        "on-surface": "#1e1b18",
+                        "inverse-on-surface": "#f8efea",
+                        "outline": "#887364",
+                        "tertiary-fixed": "#e6e5b9",
+                        "surface-container-highest": "#e9e1dc",
+                        "on-primary-fixed-variant": "#6d3a00",
+                        "outline-variant": "#dbc2b0",
+                        "on-tertiary-fixed": "#1d1d03",
+                        "tertiary-container": "#b5b48b",
+                        "on-background": "#1e1b18",
+                        "primary-fixed-dim": "#ffb77a",
+                        "on-error": "#ffffff",
+                        "secondary": "#934b19",
+                        "on-tertiary-fixed-variant": "#484828",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e9e1dc",
+                        "surface-container-high": "#efe6e2",
+                        "tertiary-fixed-dim": "#cac99f",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#fff8f5",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#34302c",
+                        "secondary-fixed": "#ffdbc9",
+                        "inverse-primary": "#ffb77a",
+                        "surface-container-low": "#fbf2ed",
+                        "surface-container": "#f5ece7",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#ffdcc2",
+                        "tertiary": "#60603e",
+                        "secondary-container": "#ffa26a",
+                        "on-secondary-fixed": "#321200",
+                        "error": "#ba1a1a",
+                        "primary": "#8f4e00",
+                        "on-primary-fixed": "#2e1500",
+                        "secondary-fixed-dim": "#ffb68c",
+                        "on-surface-variant": "#554336",
+                        "surface-tint": "#8f4e00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "md": "16px",
+                        "container-margin-desktop": "64px",
+                        "unit": "4px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "container-margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Be Vietnam Pro"],
+                        "headline-md": ["Montserrat"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "price-display": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-xl": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "price-display": ["22px", { "lineHeight": "22px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom toggle switch styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #ff9933; /* primary-container */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #ff9933; /* primary-container */
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #e9e1dc; /* surface-variant */
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            width: 3rem;
+            height: 1.5rem;
+            background-color: #e9e1dc; /* surface-variant */
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .toggle-label::after {
+            content: '';
+            position: absolute;
+            top: 0.125rem;
+            left: 0.125rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .toggle-checkbox:checked + .toggle-label::after {
+            transform: translateX(1.5rem);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant/10 shadow-xl h-full w-80 rounded-r-xl fixed left-0 top-0 z-[60]">
+<div class="p-lg flex items-center gap-md border-b border-outline-variant/10">
+<img alt="Admin profile" class="w-12 h-12 rounded-full object-cover" data-alt="A professional headshot of an administrative user in a warm, inviting tea cafe setting. Soft natural light, modern hospitality aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD3za4wXitVJrpcmXywhlJ_9yZUZvi4mLM7dkwq4erH9P-2E_rbgpb0Tnympf2OxcEVvriNbFL8toudC1EGYckg4IFCkOSjhEzk8Obqtq7DO0k6chbnmGtyBKBE51A9AigGeAXE2XleaAzTosb6HSoyqmbPv9oDS8Wqg2aIMwWj4hGwXs2LXED7OWKk5etQOoo8QstwJHzIcaZJJkjKIOgBmNqFNYQAiWVjwzDgI-pa-jvx-JpRW5M"/>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Admin Portal</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Tea Centre Management</p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-md">
+<a class="flex items-center gap-md px-lg py-sm text-on-surface-variant hover:bg-surface-variant/30 hover:bg-secondary-container/50 transition-colors duration-200 rounded-lg m-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-lg py-sm bg-secondary-container text-on-secondary-container font-bold rounded-lg m-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+<span class="font-label-md text-label-md">Menu Management</span>
+</a>
+<a class="flex items-center gap-md px-lg py-sm text-on-surface-variant hover:bg-surface-variant/30 hover:bg-secondary-container/50 transition-colors duration-200 rounded-lg m-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">analytics</span>
+<span class="font-label-md text-label-md">Order Analytics</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 w-full md:ml-80 pb-[80px] md:pb-0">
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden docked full-width top-0 bg-background dark:bg-background shadow-sm flex justify-between items-center px-container-margin-mobile w-full z-50 py-sm">
+<div class="flex items-center gap-sm">
+<img alt="User profile photo" class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of an administrative user in a warm, inviting tea cafe setting. Soft natural light, modern hospitality aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUzvqtPRvpFaajxSgwZ845T72Q42wMuLFEsJrunWeWtLdWblRrLp3XxNGc1W0_pSVdkKUAF4eIwaxGPRf0_EbH_KSEUtxd15SndwCCjhFn3rzBfAWbmwMfpK_lavWZA42JrT_Ns59CWmpRW-RelPx6U8FPEgjl302JENkFQ5WJrg2H1SXvHix-Ad0nVfBtbNduYlGji0dU3rPcS_jUirEkb-DPG8z4mLTYAe1GppvZcZEZY93zjI2u"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary text-center flex-1">Tea Centre</h1>
+<button class="text-primary dark:text-inverse-primary hover:bg-surface-variant/20 transition-all duration-200 active:scale-95 p-sm rounded-full">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</header>
+<!-- Page Header -->
+<div class="px-container-margin-mobile md:px-container-margin-desktop py-lg">
+<h1 class="font-headline-xl text-headline-xl text-on-background mb-unit">Menu Management</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Update availability and pricing for your offerings.</p>
+</div>
+<!-- Filter Chips -->
+<div class="px-container-margin-mobile md:px-container-margin-desktop pb-md overflow-x-auto whitespace-nowrap hide-scrollbar flex gap-sm">
+<button class="px-md py-sm rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md shadow-sm">All Items</button>
+<button class="px-md py-sm rounded-full bg-surface text-on-surface border border-outline/10 font-label-md text-label-md hover:bg-surface-variant/50 transition-colors">Hot Beverages</button>
+<button class="px-md py-sm rounded-full bg-surface text-on-surface border border-outline/10 font-label-md text-label-md hover:bg-surface-variant/50 transition-colors">Snacks</button>
+<button class="px-md py-sm rounded-full bg-surface text-on-surface border border-outline/10 font-label-md text-label-md hover:bg-surface-variant/50 transition-colors">Combos</button>
+</div>
+<!-- Product List -->
+<div class="px-container-margin-mobile md:px-container-margin-desktop grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md lg:gap-lg pb-xl">
+<!-- Item 1: Masala Chai -->
+<article class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(147,75,25,0.05)] overflow-hidden flex flex-col border border-outline/5 relative group">
+<div class="h-48 relative overflow-hidden">
+<img alt="Masala Chai" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A steaming cup of rich, spiced Indian Masala Chai served in a traditional cutting glass. Placed on a rustic wooden table with scattered spices like cardamom and cinnamon. Warm, inviting lighting highlighting the steam." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJEdRQP5_pT5xxqZFcAiGAGhjP2Qatfpty3tyMtxgHT34cHDz1SAmoPXq6W4JW5ZkeBzj5EgaIpRz1v7SDwtauaixdJUHMKjAZ-khDYZ8hGSVgeGUPzopiG3ev13FE_PNOTlf0YxUwy7ZuFZLaIBFDBTZYCHVZgHQQPqLSJv3aAPAOKBxVKbOcl-Ui8S-Tl4qPUpjXX2gAmD0BGi-engIiZ0Kdr3ey725hqKOwIawMHsZL3UWSumoF"/>
+<div class="absolute top-sm right-sm bg-surface/90 backdrop-blur-sm px-sm py-xs rounded text-primary font-price-display text-price-display shadow-sm">
+                        ₹25
+                    </div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-headline-md text-on-background">Masala Chai</h3>
+<div class="flex items-center">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer opacity-0" id="toggle-chai" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer" for="toggle-chai"></label>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-1">Classic spiced tea brewed with fresh ginger and cardamom.</p>
+<div class="flex gap-sm border-t border-outline/10 pt-md">
+<button class="flex-1 flex items-center justify-center gap-xs px-sm py-sm rounded-lg border border-outline/20 text-primary hover:bg-primary/5 transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                            Edit Details
+                        </button>
+<button class="flex-1 flex items-center justify-center gap-xs px-sm py-sm rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 transition-colors font-label-md text-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]">currency_rupee</span>
+                            Update Price
+                        </button>
+</div>
+</div>
+</article>
+<!-- Item 2: Punjabi Samosa -->
+<article class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(147,75,25,0.05)] overflow-hidden flex flex-col border border-outline/5 relative group">
+<div class="h-48 relative overflow-hidden">
+<img alt="Punjabi Samosa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Two large, golden-brown Punjabi samosas with a flaky crust, served on a ceramic plate with a side of green mint chutney and sweet tamarind chutney. Warm, appetizing lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdYG-qRe4UvZbxZRGthM_43mX-hO5d_sPSZGuXlIlNQY4K6c6C4mju5IkpQ-QYRot5_6T2Tc_0RoCaaPmD32hY3IZOoSkVD08V66Z75tbvBmmBfl2O4S166ykD05S6exoilp7FNdnLPwU5kUVVInNyDfcLcC0ZW1b0yD039ZlLbZahqtzujcU02HBMQIFf8aP9pi7O6zi8x6uOJ5J8UxM1pcDd3NKrgS08tzOTs4_kCxKEbecB1MB1"/>
+<div class="absolute top-sm right-sm bg-surface/90 backdrop-blur-sm px-sm py-xs rounded text-primary font-price-display text-price-display shadow-sm">
+                        ₹30
+                    </div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-headline-md text-on-background">Punjabi Samosa</h3>
+<div class="flex items-center">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer opacity-0" id="toggle-samosa" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer" for="toggle-samosa"></label>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-1">Crispy pastry filled with spiced potatoes and peas.</p>
+<div class="flex gap-sm border-t border-outline/10 pt-md">
+<button class="flex-1 flex items-center justify-center gap-xs px-sm py-sm rounded-lg border border-outline/20 text-primary hover:bg-primary/5 transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                            Edit Details
+                        </button>
+<button class="flex-1 flex items-center justify-center gap-xs px-sm py-sm rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 transition-colors font-label-md text-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]">currency_rupee</span>
+                            Update Price
+                        </button>
+</div>
+</div>
+</article>
+<!-- Item 3: Mawa Cake -->
+<article class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(147,75,25,0.05)] overflow-hidden flex flex-col border border-outline/5 relative group opacity-75">
+<div class="h-48 relative overflow-hidden grayscale-[30%]">
+<img alt="Mawa Cake" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A slice of dense, moist Irani bakery style Mawa cake on a small vintage saucer. Soft, slightly moody lighting typical of an old-world cafe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7E_9M90zeH9qb7hqU2SyF-AtZf7-r3NjpOD7CTOE8laFWD1-ejCAUBYFwEcC4JT79KF1-QiFpGKT_T-32i85M3HhedXXhFGlDWYURx9cZ9C6vcfY2AOomeyHKBSq5hldNYRBrqD1Sx5myoHi5jgMleU6vSH9xw3nXGy1ZHualBuhVDj-g9GmBzczzp_LAlai2vRM8OqwUqHUFwwgspSMAWXyMeA4jorkEkX98HdAEwnfr0lu5hEXJ"/>
+<div class="absolute top-sm right-sm bg-surface/90 backdrop-blur-sm px-sm py-xs rounded text-on-surface-variant font-price-display text-price-display shadow-sm">
+                        ₹45
+                    </div>
+<div class="absolute inset-0 bg-background/20 flex items-center justify-center">
+<span class="bg-error text-on-error px-md py-xs rounded-full font-label-md text-label-md shadow-md uppercase tracking-wider">Out of Stock</span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface-variant">Mawa Cake</h3>
+<div class="flex items-center">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer opacity-0" id="toggle-cake" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer" for="toggle-cake"></label>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-1">Rich, buttery cake made with milk solids and cardamom.</p>
+<div class="flex gap-sm border-t border-outline/10 pt-md">
+<button class="flex-1 flex items-center justify-center gap-xs px-sm py-sm rounded-lg border border-outline/20 text-primary hover:bg-primary/5 transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                            Edit Details
+                        </button>
+<button class="flex-1 flex items-center justify-center gap-xs px-sm py-sm rounded-lg bg-surface-variant text-on-surface-variant hover:bg-surface-variant/80 transition-colors font-label-md text-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]">currency_rupee</span>
+                            Update Price
+                        </button>
+</div>
+</div>
+</article>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 md:bottom-8 right-4 md:right-8 bg-primary-container text-on-primary-container p-4 rounded-full shadow-[0px_8px_24px_rgba(255,153,51,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 z-50 flex items-center justify-center group">
+<span class="material-symbols-outlined text-[28px]">add</span>
+<span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out font-label-md text-label-md group-hover:ml-2">Add New Item</span>
+</button>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full rounded-t-xl bg-surface dark:bg-surface-container shadow-[0px_-4px_20px_rgba(147,75,25,0.05)] shadow-lg fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary/10 transition-transform duration-300 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary/10 transition-transform duration-300 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
+<span class="font-label-md text-label-md mt-1">Favorites</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary/10 transition-transform duration-300 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">receipt_long</span>
+<span class="font-label-md text-label-md mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple script to handle toggle visual state if needed for form submission
+        document.querySelectorAll('.toggle-checkbox').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const article = this.closest('article');
+                if(!this.checked) {
+                    article.classList.add('opacity-75');
+                    const imgContainer = article.querySelector('.h-48');
+                    imgContainer.classList.add('grayscale-[30%]');
+                    // In a real app, you might dynamically add the "Out of Stock" overlay here
+                } else {
+                    article.classList.remove('opacity-75');
+                    const imgContainer = article.querySelector('.h-48');
+                    imgContainer.classList.remove('grayscale-[30%]');
+                }
+            });
+        });
+    </script>
+</body></html>

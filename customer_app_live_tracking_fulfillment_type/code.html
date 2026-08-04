@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Live Order Tracking - Tea Centre</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#ffb77a",
+                    "primary-fixed": "#ffdcc2",
+                    "surface-container": "#f5ece7",
+                    "tertiary-container": "#b5b48b",
+                    "tertiary-fixed": "#e6e5b9",
+                    "on-tertiary-fixed-variant": "#484828",
+                    "surface": "#fff8f5",
+                    "on-surface": "#1e1b18",
+                    "on-secondary-container": "#783603",
+                    "on-background": "#1e1b18",
+                    "on-secondary-fixed-variant": "#753401",
+                    "on-secondary-fixed": "#321200",
+                    "inverse-on-surface": "#f8efea",
+                    "on-surface-variant": "#554336",
+                    "tertiary": "#60603e",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "secondary": "#934b19",
+                    "outline-variant": "#dbc2b0",
+                    "surface-container-highest": "#e9e1dc",
+                    "on-primary-fixed": "#2e1500",
+                    "error-container": "#ffdad6",
+                    "outline": "#887364",
+                    "on-tertiary-container": "#464626",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#8f4e00",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#693800",
+                    "secondary-fixed-dim": "#ffb68c",
+                    "surface-bright": "#fff8f5",
+                    "tertiary-fixed-dim": "#cac99f",
+                    "inverse-primary": "#ffb77a",
+                    "on-primary-fixed-variant": "#6d3a00",
+                    "background": "#fff8f5",
+                    "on-tertiary-fixed": "#1d1d03",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#34302c",
+                    "surface-container-low": "#fbf2ed",
+                    "surface-tint": "#8f4e00",
+                    "secondary-container": "#ffa26a",
+                    "surface-variant": "#e9e1dc",
+                    "primary-container": "#ff9933",
+                    "surface-container-high": "#efe6e2",
+                    "surface-dim": "#e1d8d4",
+                    "secondary-fixed": "#ffdbc9",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-margin-mobile": "16px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "xl": "40px",
+                    "container-margin-desktop": "64px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "unit": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Be Vietnam Pro"
+                    ],
+                    "body-lg": [
+                            "Be Vietnam Pro"
+                    ],
+                    "price-display": [
+                            "Montserrat"
+                    ],
+                    "label-md": [
+                            "Be Vietnam Pro"
+                    ],
+                    "headline-lg-mobile": [
+                            "Montserrat"
+                    ],
+                    "headline-lg": [
+                            "Montserrat"
+                    ],
+                    "headline-md": [
+                            "Montserrat"
+                    ],
+                    "headline-xl": [
+                            "Montserrat"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "price-display": [
+                            "22px",
+                            {
+                                    "lineHeight": "22px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "30px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-xl": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+          }
+        },
+      }
+    </script>
+<style>
+        .map-overlay-gradient {
+            background: linear-gradient(180deg, rgba(255, 248, 245, 0) 60%, rgba(255, 248, 245, 0.9) 95%, rgba(255, 248, 245, 1) 100%);
+        }
+        
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        .slide-up-enter {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        .slide-up-active {
+            transform: translateY(0);
+            opacity: 1;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen overflow-hidden">
+<!-- TopAppBar Component (Rendered strictly from JSON) -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-on-surface shadow-sm">
+<div class="flex justify-between items-center px-container-margin-mobile md:px-container-margin-desktop h-16 w-full">
+<!-- Leading Icon -->
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-inverse-surface transition-colors active:scale-95 duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<!-- Headline / Brand -->
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary dark:text-primary-fixed-dim font-headline-lg-mobile text-headline-lg-mobile md:text-headline-lg">Tea Centre</h1>
+<!-- Trailing Avatar -->
+<button class="hover:bg-surface-container-low dark:hover:bg-inverse-surface transition-colors active:scale-95 duration-150 rounded-full w-10 h-10 overflow-hidden border-2 border-surface-container">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A bright, close-up portrait photograph of an Indian professional in their late twenties, smiling naturally. The lighting is soft and flattering, with a modern, clean light-mode aesthetic in the background, featuring subtle warm tones of cream and saffron. The image feels welcoming and fits perfectly into a modern hospitality app UI as a user avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcc5peCzOJNkA5gesaP2DCIm6muKlE5SfexA9pbRbOEm8EuzIUrCmSe0ew2x9VH5SZzgtDAugkguEz4tJiV_HRx-MRjSIxpT85qiBh22ewNXd4sNQlq8YoMUH6ZJkHFU9bMHDqSfZvM7lDlc_qqaKKw1Ylb8eYPKLAMx2rNrFyX4eZX8FTE4_YIqQrnGyGicSkqT_0INTZFd_0DpadsmAQvisfrTmp5seagRb4WYL_nUC7Txo-jMSa"/>
+</button>
+</div>
+</header>
+<!-- Main Map Canvas -->
+<main class="flex-1 relative w-full h-[calc(100vh)] pt-16">
+<!-- Map Image / Location -->
+<div class="absolute inset-0 w-full h-full z-0">
+<img class="w-full h-full object-cover" data-alt="A highly detailed top-down view of a modern digital map interface displaying a vibrant urban area. The map styling is clean and minimalist, utilizing a warm palette of cream, soft beige, and subtle hints of green and saffron orange for major routes. The lighting is flat and graphic, emphasizing clarity and navigation within a light-mode app environment. A glowing orange route line winds through the streets." data-location="Mumbai, Maharashtra" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQRoTRK3HWl0OnGQyUj9ak40Zlvz1HFFaHEqXAiu5EXuE3u-_d1Oi9kABaYhLbtUSmW4mNa1HDGG41OcLsnkznB3nw98z5AvmUZHkzeiFs2uCm3waSK82UGcydNYECPOdF6DpadAcWhSXR6xrRxao55I7QncisP7ZFfeeO79wCdnjwZR1m3otdSCCMHXzs9IxH5dvtO5mAYYvECOtIYU0gHNNLbKl2EJJyT6Lipu3vmLQaPWjKSQIQ"/>
+<!-- Mock Delivery Pin on Map -->
+<div class="absolute top-[40%] left-[55%] -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center">
+<div class="relative">
+<div class="absolute inset-0 bg-primary rounded-full pulse-ring"></div>
+<div class="relative w-12 h-12 bg-surface-container-lowest rounded-full shadow-[0_4px_20px_rgba(143,78,0,0.15)] flex items-center justify-center border-2 border-primary">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+</div>
+<div class="mt-2 bg-on-surface text-on-primary font-label-md text-label-md px-3 py-1 rounded-full shadow-md whitespace-nowrap">
+                    12 mins away
+                </div>
+</div>
+<!-- Gradient Overlay for Bottom Card -->
+<div class="absolute bottom-0 left-0 w-full h-64 map-overlay-gradient pointer-events-none z-10"></div>
+</div>
+<!-- Floating Order Status Card -->
+<div class="absolute bottom-0 left-0 w-full px-container-margin-mobile pb-container-margin-mobile md:px-container-margin-desktop md:pb-container-margin-desktop z-20 flex justify-center slide-up-enter" id="status-card">
+<div class="w-full max-w-[600px] bg-surface-container-lowest shadow-[0_-4px_24px_rgba(143,78,0,0.08)] rounded-[32px] overflow-hidden flex flex-col">
+<!-- Handle for perceived swipability (mobile) -->
+<div class="w-full pt-4 pb-2 flex justify-center items-center cursor-pointer md:hidden">
+<div class="w-12 h-1.5 bg-surface-variant rounded-full"></div>
+</div>
+<div class="p-lg pt-2 md:pt-lg flex flex-col gap-lg">
+<!-- Status Header -->
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-xs"><div class="flex items-center gap-1 bg-secondary-container/20 text-secondary font-label-md text-[11px] px-2 py-0.5 rounded-full w-fit mb-1"><span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>SELF PICKUP</div>
+<span class="font-label-md text-label-md text-primary tracking-wider uppercase">Ready for Pickup in 12 mins</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">Preparing your Samosas</h2>
+</div>
+<div class="bg-surface-container p-3 rounded-2xl">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 32px; font-variation-settings: 'FILL' 1;">skillet</span>
+</div>
+</div>
+<!-- Progress Stepper -->
+<div class="w-full relative py-2">
+<!-- Background Line -->
+<div class="absolute top-1/2 left-4 right-4 h-1 bg-surface-variant -translate-y-1/2 rounded-full z-0"></div>
+<!-- Active Progress Line -->
+<div class="absolute top-1/2 left-4 w-[40%] h-1 bg-primary -translate-y-1/2 rounded-full z-0 transition-all duration-500"></div>
+<div class="relative z-10 flex justify-between items-center w-full">
+<!-- Step 1: Placed (Done) -->
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-md text-[11px] leading-[14px] font-semibold text-on-surface absolute -bottom-6 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Placed</span>
+</div>
+<!-- Step 2: Preparing (Active) -->
+<div class="flex flex-col items-center gap-2">
+<div class="relative">
+<div class="absolute inset-0 bg-primary-fixed rounded-full animate-ping opacity-50"></div>
+<div class="w-8 h-8 rounded-full bg-primary-container border-2 border-primary flex items-center justify-center relative z-10">
+<div class="w-2.5 h-2.5 rounded-full bg-on-primary-container"></div>
+</div>
+</div>
+<span class="font-label-md text-[11px] leading-[14px] font-semibold text-primary absolute -bottom-6 whitespace-nowrap">Preparing</span>
+</div>
+<!-- Step 3: Out for Delivery (Pending) -->
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-surface-variant flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-surface-variant"></div>
+</div>
+<span class="font-label-md text-[11px] leading-[14px] font-semibold text-on-surface-variant absolute -bottom-6 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Out</span>
+</div>
+<!-- Step 4: Delivered (Pending) -->
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-surface-variant flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-surface-variant"></div>
+</div>
+<span class="font-label-md text-[11px] leading-[14px] font-semibold text-on-surface-variant absolute -bottom-6 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Delivered</span>
+</div>
+</div>
+</div>
+<!-- Spacing for stepper labels -->
+<div class="h-4 w-full"></div>
+<!-- Divider -->
+<div class="w-full h-px bg-surface-variant/50"></div>
+<!-- Delivery Partner Info -->
+<div class="flex items-center justify-between"><div class="flex items-center gap-md"><div class="w-14 h-14 rounded-full overflow-hidden border-2 border-surface-container shadow-sm bg-surface-container flex items-center justify-center"><span class="material-symbols-outlined text-primary" style="font-size: 32px;">store</span></div><div class="flex flex-col gap-0.5"><h3 class="font-headline-md text-[16px] leading-[24px] text-on-surface">Tea Centre - Bandra</h3><div class="flex items-center gap-1 text-on-surface-variant"><span class="font-body-md text-[13px]">1048 Grand St, Mumbai</span></div></div></div><button class="flex items-center gap-2 px-4 h-12 rounded-full bg-primary text-on-primary hover:bg-primary/90 active:scale-95 transition-all duration-200 shadow-md"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions</span><span class="font-label-md">Directions</span></button></div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple entrance animation for the floating card
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.getElementById('status-card');
+            setTimeout(() => {
+                card.classList.remove('slide-up-enter');
+                card.classList.add('slide-up-active');
+            }, 100);
+        });
+    </script>
+</body></html>

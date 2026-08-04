@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Checkout - Tea Centre</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS Setup -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#ffb77a",
+                        "primary-fixed": "#ffdcc2",
+                        "surface-container": "#f5ece7",
+                        "tertiary-container": "#b5b48b",
+                        "tertiary-fixed": "#e6e5b9",
+                        "on-tertiary-fixed-variant": "#484828",
+                        "surface": "#fff8f5",
+                        "on-surface": "#1e1b18",
+                        "on-secondary-container": "#783603",
+                        "on-background": "#1e1b18",
+                        "on-secondary-fixed-variant": "#753401",
+                        "on-secondary-fixed": "#321200",
+                        "inverse-on-surface": "#f8efea",
+                        "on-surface-variant": "#554336",
+                        "tertiary": "#60603e",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "secondary": "#934b19",
+                        "outline-variant": "#dbc2b0",
+                        "surface-container-highest": "#e9e1dc",
+                        "on-primary-fixed": "#2e1500",
+                        "error-container": "#ffdad6",
+                        "outline": "#887364",
+                        "on-tertiary-container": "#464626",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#8f4e00",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#693800",
+                        "secondary-fixed-dim": "#ffb68c",
+                        "surface-bright": "#fff8f5",
+                        "tertiary-fixed-dim": "#cac99f",
+                        "inverse-primary": "#ffb77a",
+                        "on-primary-fixed-variant": "#6d3a00",
+                        "background": "#fff8f5",
+                        "on-tertiary-fixed": "#1d1d03",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#34302c",
+                        "surface-container-low": "#fbf2ed",
+                        "surface-tint": "#8f4e00",
+                        "secondary-container": "#ffa26a",
+                        "surface-variant": "#e9e1dc",
+                        "primary-container": "#ff9933",
+                        "surface-container-high": "#efe6e2",
+                        "surface-dim": "#e1d8d4",
+                        "secondary-fixed": "#ffdbc9",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-margin-mobile": "16px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xl": "40px",
+                        "container-margin-desktop": "64px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "price-display": ["Montserrat"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "headline-xl": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "price-display": ["22px", { "lineHeight": "22px", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom Utilities */
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Smooth state transitions for inputs and radios */
+        input[type="radio"]:checked + div {
+            border-color: #ff9933; /* primary-container */
+            background-color: #fff8f5; /* surface */
+        }
+        input[type="radio"]:checked + div .radio-indicator {
+            background-color: #8f4e00; /* primary */
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:bg-surface-container-low antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-surface shadow-sm fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-container-margin-mobile md:px-container-margin-desktop h-16 w-full">
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-inverse-surface transition-colors active:scale-95 duration-150 p-2 rounded-full flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary dark:text-primary-fixed-dim font-bold tracking-tight">Checkout</h1>
+<div class="w-10 h-10"></div> <!-- Spacer for alignment -->
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow pt-[80px] pb-[100px] md:pb-lg px-container-margin-mobile md:px-0 max-w-3xl mx-auto w-full flex flex-col gap-lg">
+<!-- Order Summary Section -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(143,78,0,0.05)] overflow-hidden border border-outline-variant/30">
+<div class="p-md border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-lowest">
+<h2 class="font-headline-md text-headline-md text-on-surface">Order Summary</h2>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">3 Items</span>
+</div>
+<ul class="divide-y divide-outline-variant/10">
+<!-- Item 1 -->
+<li class="p-md flex items-start gap-md hover:bg-surface-container-low/50 transition-colors">
+<div class="w-16 h-16 rounded-lg bg-surface-container-high overflow-hidden shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="A close-up, mouth-watering photograph of a steaming cup of authentic Indian Masala Chai served in a rustic clay kulhad. The warm, earthy tones of the tea contrast with the creamy background. Soft, diffused lighting highlights the steam rising off the beverage, evoking a sense of cozy, modern hospitality and comfort." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBe6ZvknZz275QQJSUIEDhl0pzjuhtnlKlTVZPGmK35XmWFZAMnxN0DfNKLRyYl5c_fm0f4FqiJM86LB5XoYd8EUkDyMWWcjUFm4Y4-vh0Oc5Q50afUvWblUPjeqpPz-Wf6WtXDB-GD77-1e4tJ8o0S5QC1gYxXT2lwzFPKDn2FTuL73teIAolxwGAwv-J3Ju01dDQ23v8pjexfJ3awSuOVbb6Q3-yKaM04g3YP8OuGObNMVaZNq81K"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">Masala Chai in Kulhad</h3>
+<span class="font-body-md text-body-md text-on-surface font-semibold">₹60</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-xs">Extra Ginger, Less Sugar</p>
+<div class="mt-sm flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Qty: 2</span>
+<span class="font-body-md text-body-md text-on-surface-variant line-through text-sm">₹80</span>
+</div>
+</div>
+</li>
+<!-- Item 2 -->
+<li class="p-md flex items-start gap-md hover:bg-surface-container-low/50 transition-colors">
+<div class="w-16 h-16 rounded-lg bg-surface-container-high overflow-hidden shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="Two golden-brown, crispy Punjabi samosas placed on a minimalist white ceramic plate. The flaky texture is visible under warm, high-key studio lighting. A small dollop of vibrant green mint chutney adds a pop of color against the clean, bright white background, emphasizing the premium street food aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABe3i-ASaNHrGV65Ok0HlOq9ZqYS1SR2_QzpQyoaofdqbY5US1bmVgQTAikTEwHPhwcLTp5mtNwgW56XEFYL_gYM2tJUFPYlQRoi-HtmqjK5ajfxyKk3dFyFT8K1VWm7-uUGSve3GkFM_U1cax5PKUjn_59o1iv_jYXb-5kHLAF2ZWoRJJGa-F4ijqKsnb_pbeT5Vz_fKxdAHlb2xuai1lu32yIxttpHCUx5LpSGgpHIW-ku0IJNpq"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">Punjabi Samosa</h3>
+<span class="font-body-md text-body-md text-on-surface font-semibold">₹40</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-xs">With Mint Chutney</p>
+<div class="mt-sm flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Qty: 2</span>
+</div>
+</div>
+</li>
+<!-- Item 3 -->
+<li class="p-md flex items-start gap-md hover:bg-surface-container-low/50 transition-colors">
+<div class="w-16 h-16 rounded-lg bg-surface-container-high overflow-hidden shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="A slice of rich, moist Bombay Mawa cake with a slightly caramelized crust, resting on a clean white surface. The texture of the cake is detailed, showing the buttery crumb. Soft, natural light cascades from the side, creating subtle shadows and highlighting the warm, inviting nature of this classic tea-time accompaniment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTDwBzMOVRTj8VS4Yt3Pqo3zKSvZYWDrlUh5Q15ALCLhKoDDkv66R6SYVABSk7FlIjxx53aiJGR8dguL6x90OYg3ptxcCjmB8OWmZYWdpgGwjaHaRR25uTaoKoGkO4jtMqdOmLYEKoOTJgv3Qr62A7qZ1P7Rh66QIWE52GPrOEv1TN_LsZkR_54XckRSCHsszez2SCoV8s8qemPHVhYLaYu1YBB7omcAxuz6znmSSxKPZB0B4NUBNt"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">Mawa Cake Slice</h3>
+<span class="font-body-md text-body-md text-on-surface font-semibold">₹55</span>
+</div>
+<div class="mt-sm flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Qty: 1</span>
+</div>
+</div>
+</li>
+</ul>
+<!-- Bill Details -->
+<div class="p-md bg-surface border-t border-outline-variant/20">
+<div class="space-y-sm">
+<div class="flex justify-between text-on-surface-variant font-body-md text-body-md">
+<span>Subtotal</span>
+<span>₹155</span>
+</div>
+<div class="flex justify-between text-on-surface-variant font-body-md text-body-md">
+<span>Packaging Charges</span>
+<span>₹15</span>
+</div>
+<div class="flex justify-between text-on-surface-variant font-body-md text-body-md">
+<span>Taxes &amp; Fees</span>
+<span>₹8</span>
+</div>
+<div class="flex justify-between items-center pt-sm mt-sm border-t border-outline-variant/20">
+<span class="font-headline-md text-headline-md text-on-surface">To Pay</span>
+<span class="font-price-display text-price-display text-primary">₹178</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Delivery Address Section -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(143,78,0,0.05)] overflow-hidden border border-outline-variant/30 relative">
+<div class="p-md border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-lowest">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                    Delivery Details
+                </h2>
+<button class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors focus:outline-none">Change</button>
+</div>
+<div class="p-md">
+<div class="h-32 bg-surface-container-low rounded-lg mb-md overflow-hidden relative border border-outline-variant/20">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A stylized, clean digital map snippet centered on a bustling commercial district in Mumbai. The map uses a bright, minimalist color palette with warm cream tones for landmasses and subtle teal for water. A prominent, vibrant saffron orange drop-pin indicates the delivery destination. The style is modern, vector-based, and highly legible." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDF-As2v2Bm25l57sVFv_e4fOBsm-FC1utavvGFLSXeNdE-ZdRpVUGN6lImIAiy-0fDgxpUydhlApeF6bYQZFNIVaHEJhNGWZQUgTlG-tl-hk6XWGvfQi29C9BpAkL78U9o_FzJ8m92VTq95yePTAmaJTZmOKexv8s97GO_a_M-yEdtlmDUEKqRfUOMk8ZP8HYwlx89kfrPrr-oJHm4Pzx0BvtohRwPg09iFXetRkPSD_-TZG0DzZ-a')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+</div>
+<div class="flex gap-md items-start">
+<div class="mt-1">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">home_work</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">Work</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs line-clamp-2">
+                            Level 4, TechPark Alpha, Outer Ring Road, 
+                            <br/>Next to Metro Station, Bangalore 560103
+                        </p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">
+<span class="font-semibold text-on-surface">Receiver:</span> Rahul D. (+91 98765 43210)
+                        </p>
+</div>
+</div>
+</div>
+<!-- Delivery Instructions Input -->
+<div class="px-md pb-md">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 0;">chat</span>
+</div>
+<input class="w-full h-12 pl-10 pr-4 bg-surface rounded-lg border border-outline/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/50" placeholder="Add delivery instructions (e.g. Leave at reception)" type="text"/>
+</div>
+</div>
+</section>
+<!-- Payment Method Section -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(143,78,0,0.05)] overflow-hidden border border-outline-variant/30">
+<div class="p-md border-b border-outline-variant/20 bg-surface-container-lowest">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">payments</span>
+                    Payment Method
+                </h2>
+</div>
+<div class="p-md space-y-sm">
+<!-- UPI / Razorpay Option -->
+<label class="relative block cursor-pointer group">
+<input checked="" class="peer sr-only" name="payment_method" type="radio" value="upi"/>
+<div class="p-md rounded-lg border-2 border-outline-variant/30 hover:bg-surface-container-low transition-colors flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-5 h-5 rounded-full border-2 border-outline flex items-center justify-center shrink-0 group-hover:border-primary transition-colors">
+<div class="radio-indicator w-2.5 h-2.5 rounded-full bg-transparent scale-0 transition-transform duration-200"></div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold flex items-center gap-2">
+                                    Pay via UPI
+                                    <span class="bg-[#1f933d]/10 text-[#1f933d] text-xs px-2 py-0.5 rounded font-label-md font-bold uppercase tracking-wider">Fast</span>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-xs">GPay, PhonePe, Paytm (Powered by Razorpay)</p>
+</div>
+</div>
+<div class="flex gap-2 opacity-70">
+<img class="h-6 object-contain" data-alt="A small, stylized, flat vector logo icon for Google Pay (GPay) featuring the characteristic interlocking colored geometric shapes on a transparent background. Designed to look clean and legible at small sizes within a modern UI context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX5oybHky5yl1cWgvTh-sTFxpKwyYnSwSOr6T619qzW-ys6RixMh8NZvPMM9MwSOFL6aeX4fagK206UNqxyQ7YUY1UgFOisbNsIe2QQ6mqIXJokDS5LdFSPiILIQJySnEbTL4IAtRrnatc9JnlSbaGwbBxRQMlgpOE2TcEVmLEX6Mp_cTKLZ058i2ssUF6TnHwTMeZqibT6kLXCdP5XZIVbJLFWbnewjJMhs3nisfjICSTBd68DH85"/>
+<img class="h-6 object-contain" data-alt="A small, stylized, flat vector logo icon for PhonePe featuring a bold purple and white abstract geometric shape on a transparent background. Designed to fit neatly alongside other payment icons in a minimalist checkout screen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8j6rOf6Rj7vhcxWQlxI98w3zMbk1IoiwS6q5bNYAiOQROdnj_nc7RhFGkCBTFswBXnp1KabEnm3TmBmnAjkDtFHts1qP1bzMJyX93fPftZ2lpuj12SkKyaFTmxVlLvCNScG-X2cB5LkJ8N9SIE2KdBEPHdqOu4QhsTpRKUfIoN_POSD1JgTu5JPyaQAJjOPj4ajq0PcX3FFQHswcBHCmcW5vZKtoOudLUKsuX28-9U69ueQ8Zk_SU"/>
+</div>
+</div>
+</label>
+<!-- Cards Option -->
+<label class="relative block cursor-pointer group">
+<input class="peer sr-only" name="payment_method" type="radio" value="cards"/>
+<div class="p-md rounded-lg border-2 border-outline-variant/30 hover:bg-surface-container-low transition-colors flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-5 h-5 rounded-full border-2 border-outline flex items-center justify-center shrink-0 group-hover:border-primary transition-colors">
+<div class="radio-indicator w-2.5 h-2.5 rounded-full bg-transparent scale-0 transition-transform duration-200"></div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">Credit / Debit Card</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-xs">Visa, Mastercard, RuPay</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 0;">credit_card</span>
+</div>
+</label>
+<!-- COD Option -->
+<label class="relative block cursor-pointer group">
+<input class="peer sr-only" name="payment_method" type="radio" value="cod"/>
+<div class="p-md rounded-lg border-2 border-outline-variant/30 hover:bg-surface-container-low transition-colors flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-5 h-5 rounded-full border-2 border-outline flex items-center justify-center shrink-0 group-hover:border-primary transition-colors">
+<div class="radio-indicator w-2.5 h-2.5 rounded-full bg-transparent scale-0 transition-transform duration-200"></div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">Cash on Delivery</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-xs">Pay with cash upon arrival</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 0;">money</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Trust Badge -->
+<div class="flex items-center justify-center gap-2 text-on-surface-variant/70 mb-xl md:mb-0">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-md text-label-md text-xs uppercase tracking-widest">Secure 128-bit Encrypted Checkout</span>
+</div>
+</main>
+<!-- Floating Bottom Action Bar (Mobile First) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant/20 p-4 pb-safe shadow-[0_-8px_30px_rgba(143,78,0,0.08)] z-40 md:relative md:border-none md:shadow-none md:bg-transparent md:p-0 md:max-w-3xl md:mx-auto md:pb-xl px-container-margin-mobile">
+<div class="flex items-center justify-between gap-md">
+<div class="flex flex-col md:hidden">
+<span class="font-body-md text-body-md text-on-surface-variant text-sm">Total to Pay</span>
+<span class="font-price-display text-price-display text-primary">₹178</span>
+</div>
+<button class="flex-grow md:w-full bg-primary hover:bg-on-primary-container text-on-primary font-headline-md text-headline-md py-4 px-6 rounded-full shadow-lg shadow-primary/30 transition-all active:scale-95 flex items-center justify-center gap-2 relative overflow-hidden group">
+<div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+<span class="relative z-10 flex items-center gap-2">
+                    Place Order <span class="hidden md:inline">· ₹178</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</span>
+</button>
+</div>
+</div>
+<!-- Interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add subtle pulse effect to the place order button when scrolling down
+            const placeOrderBtn = document.querySelector('button.bg-primary');
+            let lastScrollY = window.scrollY;
+            
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    placeOrderBtn.classList.add('shadow-xl');
+                } else {
+                    placeOrderBtn.classList.remove('shadow-xl');
+                }
+                lastScrollY = currentScrollY;
+            });
+        });
+    </script>
+</body></html>
