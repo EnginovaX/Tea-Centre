@@ -22,11 +22,13 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = AppRoutes.router(context, ref);
+
     return MaterialApp.router(
       title: 'Tea Centre',
       debugShowCheckedModeBanner: false,
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
 
       // Routing Configuration
-      routerConfig: AppRoutes.router,
+      routerConfig: router,
 
       // Localization Configuration
       localizationsDelegates: const [
