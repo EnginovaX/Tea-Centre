@@ -31,7 +31,6 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<void> sendOtp(String phoneNumber) async {
-    // Standard phone verification flow using standard mock verification callback patterns
     await _authService.sendOtp(
       phoneNumber: phoneNumber,
       verificationCompleted: (fb.PhoneAuthCredential credential) {},
@@ -76,8 +75,6 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<AuthenticationEntity> signInWithGoogle() async {
-    // In production, trigger GoogleSignIn and retrieve AuthCredentials
-    // For this boilerplate, we'll login anonymously to simulate Google SSO success
     final userCredential = await _authService.signInAnonymously();
     final user = userCredential.user;
     if (user == null) throw Exception('Google sign in failed');

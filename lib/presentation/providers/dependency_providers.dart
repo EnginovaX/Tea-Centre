@@ -7,10 +7,18 @@ import '../../data/repositories/address_repository_impl.dart';
 import '../../data/repositories/auth_repository_impl.dart';
 import '../../data/repositories/profile_repository_impl.dart';
 import '../../data/repositories/user_repository_impl.dart';
+import '../../data/repositories/menu_repository_impl.dart';
+import '../../data/repositories/cart_repository_impl.dart';
+import '../../data/repositories/order_repository_impl.dart';
+import '../../data/repositories/favorite_repository_impl.dart';
 import '../../domain/repositories/address_repository.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../../domain/repositories/profile_repository.dart';
 import '../../domain/repositories/user_repository.dart';
+import '../../domain/repositories/menu_repository.dart';
+import '../../domain/repositories/cart_repository.dart';
+import '../../domain/repositories/order_repository.dart';
+import '../../domain/repositories/favorite_repository.dart';
 
 // Services
 final firebaseAuthServiceProvider = Provider<FirebaseAuthService>((ref) {
@@ -54,6 +62,33 @@ final profileRepositoryProvider = Provider<ProfileRepository>((ref) {
 
 final addressRepositoryProvider = Provider<AddressRepository>((ref) {
   return AddressRepositoryImpl(
+    firestoreService: ref.watch(firestoreServiceProvider),
+    sessionManager: ref.watch(sessionManagerProvider),
+  );
+});
+
+final menuRepositoryProvider = Provider<MenuRepository>((ref) {
+  return MenuRepositoryImpl(
+    firestoreService: ref.watch(firestoreServiceProvider),
+    sessionManager: ref.watch(sessionManagerProvider),
+  );
+});
+
+final cartRepositoryProvider = Provider<CartRepository>((ref) {
+  return CartRepositoryImpl(
+    firestoreService: ref.watch(firestoreServiceProvider),
+    sessionManager: ref.watch(sessionManagerProvider),
+  );
+});
+
+final orderRepositoryProvider = Provider<OrderRepository>((ref) {
+  return OrderRepositoryImpl(
+    firestoreService: ref.watch(firestoreServiceProvider),
+  );
+});
+
+final favoriteRepositoryProvider = Provider<FavoriteRepository>((ref) {
+  return FavoriteRepositoryImpl(
     firestoreService: ref.watch(firestoreServiceProvider),
     sessionManager: ref.watch(sessionManagerProvider),
   );
