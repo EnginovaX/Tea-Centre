@@ -5,7 +5,7 @@ import '../../domain/entities/product_entity.dart';
 import '../../presentation/providers/auth_provider.dart';
 import '../../presentation/screens/placeholder_screen.dart';
 
-// Import our real customer screens
+// Import customer screens
 import '../../presentation/screens/splash_screen.dart';
 import '../../presentation/screens/welcome_screen.dart';
 import '../../presentation/screens/login_screen.dart';
@@ -25,6 +25,14 @@ import '../../presentation/screens/notifications_screen.dart';
 import '../../presentation/screens/edit_profile_screen.dart';
 import '../../presentation/screens/address_screen.dart';
 import '../../presentation/screens/settings_screen.dart';
+
+// Import admin screens
+import '../../presentation/screens/admin_login_screen.dart';
+import '../../presentation/screens/admin_dashboard_screen.dart';
+import '../../presentation/screens/admin_menu_management_screen.dart';
+import '../../presentation/screens/admin_inventory_screen.dart';
+import '../../presentation/screens/admin_coupons_screen.dart';
+import '../../presentation/screens/admin_customers_screen.dart';
 
 class AppRoutes {
   static const String splash = '/splash';
@@ -46,8 +54,14 @@ class AppRoutes {
   static const String orderHistory = '/order-history';
   static const String favorites = '/favorites';
   static const String notifications = '/notifications';
+
+  // Admin routes
+  static const String adminLogin = '/admin/login';
   static const String adminDashboard = '/admin/dashboard';
   static const String adminMenu = '/admin/menu';
+  static const String adminInventory = '/admin/inventory';
+  static const String adminCoupons = '/admin/coupons';
+  static const String adminCustomers = '/admin/customers';
 }
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -66,10 +80,23 @@ final routerProvider = Provider<GoRouter>((ref) {
         AppRoutes.login,
         AppRoutes.otp,
         AppRoutes.register,
+        AppRoutes.adminLogin,
+      ];
+
+      // Admin routes list
+      final adminRoutes = [
+        AppRoutes.adminDashboard,
+        AppRoutes.adminMenu,
+        AppRoutes.adminInventory,
+        AppRoutes.adminCoupons,
+        AppRoutes.adminCustomers,
       ];
 
       if (!isAuth) {
         if (!publicRoutes.contains(loc)) {
+          if (adminRoutes.contains(loc)) {
+            return AppRoutes.adminLogin;
+          }
           return AppRoutes.login;
         }
       } else {
@@ -163,13 +190,31 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: AppRoutes.notifications,
         builder: (context, state) => const NotificationsScreen(),
       ),
+
+      // Admin routes integration
+      GoRoute(
+        path: AppRoutes.adminLogin,
+        builder: (context, state) => const AdminLoginScreen(),
+      ),
       GoRoute(
         path: AppRoutes.adminDashboard,
-        builder: (context, state) => const PlaceholderScreen(title: 'Admin Dashboard'),
+        builder: (context, state) => const AdminDashboardScreen(),
       ),
       GoRoute(
         path: AppRoutes.adminMenu,
-        builder: (context, state) => const PlaceholderScreen(title: 'Admin Menu Management'),
+        builder: (context, state) => const AdminMenuManagementScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.adminInventory,
+        builder: (context, state) => const AdminInventoryScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.adminCoupons,
+        builder: (context, state) => const AdminCouponsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.adminCustomers,
+        builder: (context, state) => const AdminCustomersScreen(),
       ),
     ],
     errorBuilder: (context, state) => Scaffold(
