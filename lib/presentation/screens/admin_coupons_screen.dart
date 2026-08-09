@@ -1,16 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../domain/entities/coupon_entity.dart';
-import '../providers/coupon_provider.dart';
 
-class AdminCouponsScreen extends ConsumerStatefulWidget {
+class AdminCouponsScreen extends StatefulWidget {
   const AdminCouponsScreen({super.key});
 
   @override
-  ConsumerState<AdminCouponsScreen> createState() => _AdminCouponsScreenState();
+  State<AdminCouponsScreen> createState() => _AdminCouponsScreenState();
 }
 
-class _AdminCouponsScreenState extends ConsumerState<AdminCouponsScreen> {
+class _AdminCouponsScreenState extends State<AdminCouponsScreen> {
+  // Mock coupon list
+  final List<Map<String, dynamic>> _coupons = [
+    {
+      'code': 'CHAI10',
+      'discountPercent': 10,
+      'minSpend': 150.0,
+      'isActive': true,
+    },
+    {
+      'code': 'MONSOON20',
+      'discountPercent': 20,
+      'minSpend': 250.0,
+      'isActive': true,
+    },
+    {
+      'code': 'GUEST5',
+      'discountPercent': 5,
+      'minSpend': 100.0,
+      'isActive': false,
+    },
+  ];
+
   final _codeController = TextEditingController();
   final _discountController = TextEditingController();
   final _minSpendController = TextEditingController();
@@ -66,33 +85,28 @@ class _AdminCouponsScreenState extends ConsumerState<AdminCouponsScreen> {
               ),
               const SizedBox(height: 24),
               ElevatedButton(
-                onPressed: () async {
+                onPressed: () {
                   if (_codeController.text.isNotEmpty &&
                       _discountController.text.isNotEmpty &&
                       _minSpendController.text.isNotEmpty) {
-                    final newCoupon = CouponEntity(
-                      code: _codeController.text.toUpperCase(),
-                      description: 'Custom admin coupon code',
-                      type: CouponType.percentage,
-                      value: double.tryParse(_discountController.text) ?? 10.0,
-                      minOrderAmount: double.tryParse(_minSpendController.text) ?? 100.0,
-                      expiryDate: DateTime.now().add(const Duration(days: 30)),
-                      isActive: true,
-                    );
-                    await ref.read(couponProvider.notifier).createAndPublishCoupon(newCoupon);
-
+                    setState(() {
+                      _coupons.add({
+                        'code': _codeController.text.toUpperCase(),
+                        'discountPercent': int.tryParse(_discountController.text) ?? 10,
+                        'minSpend': double.tryParse(_minSpendController.text) ?? 100.0,
+                        'isActive': true,
+                      });
+                    });
                     _codeController.clear();
                     _discountController.clear();
                     _minSpendController.clear();
-                    if (context.mounted) {
-                      Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Coupon Generated Successfully!'),
-                          backgroundColor: Colors.green,
-                        ),
-                      );
-                    }
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Coupon Generated Successfully!'),
+                        backgroundColor: Colors.green,
+                      ),
+                    );
                   }
                 },
                 child: const Text('Generate & Publish'),
@@ -105,10 +119,15 @@ class _AdminCouponsScreenState extends ConsumerState<AdminCouponsScreen> {
     );
   }
 
+  void _toggleCouponStatus(int index) {
+    setState(() {
+      _coupons[index]['isActive'] = !_coupons[index]['isActive'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final couponsState = ref.watch(couponProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -122,81 +141,77 @@ class _AdminCouponsScreenState extends ConsumerState<AdminCouponsScreen> {
         icon: const Icon(Icons.add_card),
         label: const Text('Generate Coupon'),
       ),
-      body: couponsState.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (err, stack) => Center(child: Text('Error: $err')),
-        data: (list) => ListView.builder(
-          padding: const EdgeInsets.all(16),
-          itemCount: list.length,
-          itemBuilder: (context, index) {
-            final coupon = list[index];
-            return Card(
-              margin: const EdgeInsets.only(bottom: 12),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.primaryContainer,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Text(
-                            coupon.code,
-                            style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              color: theme.colorScheme.onPrimaryContainer,
-                              letterSpacing: 1,
-                            ),
-                          ),
+      body: ListView.builder(
+        padding: const EdgeInsets.all(16),
+        itemCount: _coupons.length,
+        itemBuilder: (context, index) {
+          final coupon = _coupons[index];
+          return Card(
+            margin: const EdgeInsets.only(bottom: 12),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.primaryContainer,
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Discount: ${coupon.value.toInt()}% Off',
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'Min Spend Requirement: ₹${coupon.minOrderAmount}',
-                          style: const TextStyle(
-                            fontSize: 13,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          coupon.isActive ? 'Active' : 'Disabled',
+                        child: Text(
+                          coupon['code'],
                           style: TextStyle(
-                            fontSize: 11,
+                            fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold,
-                            color: coupon.isActive ? Colors.green : Colors.grey,
+                            color: theme.colorScheme.onPrimaryContainer,
+                            letterSpacing: 1,
                           ),
                         ),
-                        Switch(
-                          value: coupon.isActive,
-                          onChanged: (val) async {
-                            await ref.read(couponProvider.notifier).toggleStatus(coupon.code, val);
-                          },
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Discount: ${coupon['discountPercent']}% Off',
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                      Text(
+                        'Min Spend Requirement: ₹${coupon['minSpend']}',
+                        style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        coupon['isActive'] ? 'Active' : 'Disabled',
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                          color: coupon['isActive'] ? Colors.green : Colors.grey,
+                        ),
+                      ),
+                      Switch(
+                        value: coupon['isActive'],
+                        onChanged: (val) {
+                          _toggleCouponStatus(index);
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

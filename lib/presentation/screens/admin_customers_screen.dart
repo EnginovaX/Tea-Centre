@@ -1,14 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../providers/customer_provider.dart';
 
-class AdminCustomersScreen extends ConsumerWidget {
+class AdminCustomersScreen extends StatefulWidget {
   const AdminCustomersScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  State<AdminCustomersScreen> createState() => _AdminCustomersScreenState();
+}
+
+class _AdminCustomersScreenState extends State<AdminCustomersScreen> {
+  // Mock customer list with spend statistics
+  final List<Map<String, dynamic>> _customers = [
+    {
+      'id': 'c101',
+      'name': 'Amit Sharma',
+      'phone': '+91 98765 43210',
+      'totalOrders': 18,
+      'lifetimeSpend': 3450.0,
+      'lastActive': 'Today',
+    },
+    {
+      'id': 'c102',
+      'name': 'Priya Patel',
+      'phone': '+91 91234 56789',
+      'totalOrders': 12,
+      'lifetimeSpend': 2180.0,
+      'lastActive': 'Yesterday',
+    },
+    {
+      'id': 'c103',
+      'name': 'Rahul Verma',
+      'phone': '+91 98123 45670',
+      'totalOrders': 5,
+      'lifetimeSpend': 650.0,
+      'lastActive': '3 days ago',
+    },
+    {
+      'id': 'c104',
+      'name': 'Sneha Rao',
+      'phone': '+91 95432 10987',
+      'totalOrders': 24,
+      'lifetimeSpend': 5120.0,
+      'lastActive': 'Today',
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final customersState = ref.watch(customerProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -35,15 +73,12 @@ class AdminCustomersScreen extends ConsumerWidget {
                           style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey),
                         ),
                         const SizedBox(height: 4),
-                        customersState.maybeWhen(
-                          data: (list) => Text(
-                            '${list.length} Users',
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                            ),
+                        Text(
+                          '${_customers.length} Users',
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
                           ),
-                          orElse: () => const Text('...'),
                         ),
                       ],
                     ),
@@ -72,63 +107,59 @@ class AdminCustomersScreen extends ConsumerWidget {
           ),
 
           Expanded(
-            child: customersState.when(
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (err, stack) => Center(child: Text('Error: $err')),
-              data: (list) => ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: list.length,
-                itemBuilder: (context, index) {
-                  final customer = list[index];
-                  return Card(
-                    margin: const EdgeInsets.only(bottom: 12),
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        child: Text(
-                          customer.name[0],
-                          style: TextStyle(
-                            color: theme.colorScheme.onPrimaryContainer,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      title: Text(
-                        customer.name,
-                        style: theme.textTheme.titleMedium?.copyWith(
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              itemCount: _customers.length,
+              itemBuilder: (context, index) {
+                final customer = _customers[index];
+                return Card(
+                  margin: const EdgeInsets.only(bottom: 12),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: theme.colorScheme.primaryContainer,
+                      child: Text(
+                        customer['name'][0],
+                        style: TextStyle(
+                          color: theme.colorScheme.onPrimaryContainer,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Phone: ${customer.phone}'),
-                          Text('Last Active: ${customer.lastActive}',
-                              style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic)),
-                        ],
-                      ),
-                      trailing: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            '₹${customer.lifetimeSpend}',
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Montserrat',
-                              color: Colors.green.shade700,
-                            ),
-                          ),
-                          Text(
-                            '${customer.totalOrders} orders',
-                            style: const TextStyle(fontSize: 12, color: Colors.grey),
-                          ),
-                        ],
+                    ),
+                    title: Text(
+                      customer['name'],
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  );
-                },
-              ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Phone: ${customer['phone']}'),
+                        Text('Last Active: ${customer['lastActive']}',
+                            style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic)),
+                      ],
+                    ),
+                    trailing: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          '₹${customer['lifetimeSpend']}',
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Montserrat',
+                            color: Colors.green.shade700,
+                          ),
+                        ),
+                        Text(
+                          '${customer['totalOrders']} orders',
+                          style: const TextStyle(fontSize: 12, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
             ),
           ),
         ],

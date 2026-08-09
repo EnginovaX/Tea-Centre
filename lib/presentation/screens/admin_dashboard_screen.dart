@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/routes/app_routes.dart';
-import '../providers/analytics_provider.dart';
 
-class AdminDashboardScreen extends ConsumerStatefulWidget {
+class AdminDashboardScreen extends StatefulWidget {
   const AdminDashboardScreen({super.key});
 
   @override
-  ConsumerState<AdminDashboardScreen> createState() => _AdminDashboardScreenState();
+  State<AdminDashboardScreen> createState() => _AdminDashboardScreenState();
 }
 
-class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
+class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
   // Mock order items for the dashboard
   final List<Map<String, dynamic>> _mockOrders = [
     {
@@ -55,7 +53,6 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final analyticsState = ref.watch(analyticsProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -91,48 +88,44 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
             ),
             const SizedBox(height: 16),
 
-            // Metrics Cards Grid bound to Riverpod State
-            analyticsState.when(
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (err, stack) => Text('Error loading stats: $err'),
-              data: (data) => GridView.count(
-                crossAxisCount: 2,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                mainAxisSpacing: 12,
-                crossAxisSpacing: 12,
-                childAspectRatio: 1.4,
-                children: [
-                  _buildMetricCard(
-                    context: context,
-                    title: "Today's Revenue",
-                    value: "₹${data.totalRevenueToday.toInt()}",
-                    icon: Icons.currency_rupee,
-                    color: Colors.green,
-                  ),
-                  _buildMetricCard(
-                    context: context,
-                    title: "Active Orders",
-                    value: "${data.totalOrdersToday}",
-                    icon: Icons.shopping_bag,
-                    color: theme.colorScheme.primary,
-                  ),
-                  _buildMetricCard(
-                    context: context,
-                    title: "Low Stock Items",
-                    value: "${data.pendingOrdersCount}", // bound to state
-                    icon: Icons.warning_amber_rounded,
-                    color: Colors.orange,
-                  ),
-                  _buildMetricCard(
-                    context: context,
-                    title: "Total Customers",
-                    value: "${data.activeCustomersCount}",
-                    icon: Icons.people,
-                    color: Colors.blue,
-                  ),
-                ],
-              ),
+            // Metrics Cards Grid
+            GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
+              childAspectRatio: 1.4,
+              children: [
+                _buildMetricCard(
+                  context: context,
+                  title: "Today's Revenue",
+                  value: "₹18,450",
+                  icon: Icons.currency_rupee,
+                  color: Colors.green,
+                ),
+                _buildMetricCard(
+                  context: context,
+                  title: "Active Orders",
+                  value: "24",
+                  icon: Icons.shopping_bag,
+                  color: theme.colorScheme.primary,
+                ),
+                _buildMetricCard(
+                  context: context,
+                  title: "Low Stock Items",
+                  value: "3",
+                  icon: Icons.warning_amber_rounded,
+                  color: Colors.orange,
+                ),
+                _buildMetricCard(
+                  context: context,
+                  title: "Total Customers",
+                  value: "1,248",
+                  icon: Icons.people,
+                  color: Colors.blue,
+                ),
+              ],
             ),
             const SizedBox(height: 24),
 
