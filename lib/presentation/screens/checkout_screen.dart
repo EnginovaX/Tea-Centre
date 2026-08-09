@@ -9,11 +9,18 @@ import '../../domain/entities/order_entity.dart';
 import '../../core/routes/app_routes.dart';
 import '../widgets/app_button.dart';
 
-class CheckoutScreen extends ConsumerWidget {
+class CheckoutScreen extends ConsumerStatefulWidget {
   const CheckoutScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<CheckoutScreen> createState() => _CheckoutScreenState();
+}
+
+class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
+  String _selectedPaymentMethod = 'COD';
+
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final userId = ref.watch(authProvider).uid ?? 'guest';
     final cartState = ref.watch(cartProvider(userId));
@@ -77,18 +84,43 @@ class CheckoutScreen extends ConsumerWidget {
               Card(
                 child: Column(
                   children: [
-                    RadioListTile(
+                    RadioListTile<String>(
                       title: const Text('Cash on Delivery (COD)'),
                       value: 'COD',
-                      groupValue: 'COD',
-                      onChanged: (val) {},
+                      groupValue: _selectedPaymentMethod,
+                      onChanged: (val) {
+                        if (val != null) {
+                          setState(() {
+                            _selectedPaymentMethod = val;
+                          });
+                        }
+                      },
                     ),
                     const Divider(height: 1),
-                    RadioListTile(
+                    RadioListTile<String>(
                       title: const Text('UPI (GPay / Paytm / PhonePe)'),
                       value: 'UPI',
-                      groupValue: 'COD',
-                      onChanged: (val) {},
+                      groupValue: _selectedPaymentMethod,
+                      onChanged: (val) {
+                        if (val != null) {
+                          setState(() {
+                            _selectedPaymentMethod = val;
+                          });
+                        }
+                      },
+                    ),
+                    const Divider(height: 1),
+                    RadioListTile<String>(
+                      title: const Text('Razorpay (Cards / NetBanking)'),
+                      value: 'RAZORPAY',
+                      groupValue: _selectedPaymentMethod,
+                      onChanged: (val) {
+                        if (val != null) {
+                          setState(() {
+                            _selectedPaymentMethod = val;
+                          });
+                        }
+                      },
                     ),
                   ],
                 ),
@@ -103,8 +135,8 @@ class CheckoutScreen extends ConsumerWidget {
                     userId: userId,
                     items: cartState.items,
                     totalAmount: cartState.totalAmount,
-                    paymentMethod: 'COD',
-                    paymentStatus: 'Pending',
+                    paymentMethod: _selectedPaymentMethod,
+                    paymentStatus: _selectedPaymentMethod == 'COD' ? 'Pending' : 'Paid',
                     orderStatus: 'Order Received',
                     deliveryAddress: 'Flat 402, Saffron Heights, Mumbai - 400001',
                     deliveryCharge: cartState.deliveryCharge,
