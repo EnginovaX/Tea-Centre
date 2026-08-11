@@ -35,7 +35,6 @@ app.*.symbols
 app.*.map.json
 
 # Ignore generated platform configurations
-/android/
 /ios/
 /macos/
 /windows/
