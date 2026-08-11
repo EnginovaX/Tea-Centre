@@ -40,3 +40,6 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+
+dependency_overrides:
+  objective_c: 9.1.0
